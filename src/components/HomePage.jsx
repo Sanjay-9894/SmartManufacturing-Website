@@ -1,23 +1,26 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import gear from '../assets/gear.jpeg';
+import AI2 from '../assets/AI2.jpeg';
+import sanjay from '../assets/sanjay.jpeg'
 
 const HomePage = () => {
   // For hero slider functionality
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
-      image: "/api/placeholder/1920/700",
+      image: sanjay,
       title: "Advancing Manufacturing Through Innovation",
       description: "Creating the future of intelligent production systems"
     },
     {
-      image: "/api/placeholder/1920/700",
+      image: gear,
       title: "Industry 4.0 Solutions",
       description: "Implementing smart technology for tomorrow's factories"
     },
     {
-      image: "/api/placeholder/1920/700",
-      title: "Manufacturing Excellence",
+      image: AI2,
+      title: "Artificial Intelligence",
       description: "Bridging academia and industry for practical innovations"
     }
   ];
@@ -26,7 +29,7 @@ const HomePage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 5000);
+    }, 2500);
     return () => clearInterval(interval);
   }, [slides.length]);
 
@@ -194,7 +197,7 @@ const HomePage = () => {
           <div className="w-24 h-1 bg-black mx-auto mb-12"></div>
           
           <div className="flex flex-wrap justify-center gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
+            {[1, 2, 3, 4, 5, 6,7,8].map((item) => (
               <div key={item} className="bg-white p-6 rounded-lg shadow-sm w-40 h-32 flex items-center justify-center">
                 <div className="text-gray-400 font-semibold">Partner Logo</div>
               </div>
