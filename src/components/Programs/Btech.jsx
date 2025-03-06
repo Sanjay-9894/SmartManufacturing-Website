@@ -140,7 +140,6 @@ const BTech = () => {
           </div>
         </section>
 
-        {/* Course Structure */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
@@ -152,7 +151,7 @@ const BTech = () => {
 {semesterCourses.map((semester, index) => (
   <div key={index} className="mb-16">
     <div className="flex items-center mb-8 group">
-      {/* Updated Modern Number Label */}
+  
       <div className="flex items-center">
         <div className="relative">
           <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg 
@@ -161,17 +160,15 @@ const BTech = () => {
             <span className="text-2xl font-bold text-white">
               {String(index + 1).padStart(2, '0')}
             </span>
-            {/* Decorative elements */}
+   
             <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full opacity-50"></div>
             <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-300 rounded-full opacity-50"></div>
           </div>
         </div>
-        
-        {/* Connecting line */}
+
         <div className="h-0.5 w-8 bg-gradient-to-r from-blue-500 to-transparent mx-4"></div>
       </div>
 
-      {/* Semester Information */}
       <div className="flex flex-col">
         <h3 className="text-2xl font-bold text-gray-800 group-hover:text-blue-600 
                      transition-colors duration-300">
@@ -181,7 +178,6 @@ const BTech = () => {
       </div>
     </div>
 
-    {/* Course Table - remains the same */}
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
       <table className="w-full">
         <thead>
@@ -210,7 +206,7 @@ const BTech = () => {
           </div>
         </section>
 
-        {/* Admission Information */}
+
         <section className="bg-white py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">

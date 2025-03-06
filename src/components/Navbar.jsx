@@ -13,7 +13,7 @@ const Navbar = () => {
     { label: 'PhD', href: '/phd' },
   ];
 
-  // Close dropdown when clicking outside
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -27,7 +27,7 @@ const Navbar = () => {
     };
   }, []);
 
-  // Prevent body scroll when mobile menu is open
+  
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -58,11 +58,11 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
+        
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <NavLink href="/about">About</NavLink>
 
-            {/* Desktop Dropdown */}
+            
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={toggleDropdown}
@@ -103,7 +103,7 @@ const Navbar = () => {
             <NavLink href="/contact">Contact us</NavLink>
           </div>
 
-          {/* Mobile Menu Button */}
+
           <button
             onClick={toggleMenu}
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none"
@@ -187,7 +187,7 @@ const Navbar = () => {
   );
 };
 
-// Reusable NavLink components
+
 const NavLink = ({ href, children }) => (
   <a
     href={href}
