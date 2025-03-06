@@ -2,14 +2,14 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import gear from '../assets/gear.jpeg';
 import AI2 from '../assets/AI2.jpeg';
-import sanjay from '../assets/sanjay.jpeg'
+import coll from '../assets/coll.jpg'
 
 const HomePage = () => {
   // For hero slider functionality
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
-      image: sanjay,
+      image: coll,
       title: "Advancing Manufacturing Through Innovation",
       description: "Creating the future of intelligent production systems"
     },
