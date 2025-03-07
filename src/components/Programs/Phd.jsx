@@ -100,7 +100,8 @@ const PhD = () => {
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-[#1E2F23] via-[#2D3E33] to-[#1E2F23] text-gray-200 py-24 px-4 relative overflow-hidden">
+        <section className="bg-gradient-to-r from-[#2C2F33] via-[#23272A] to-[#2C2F33] text-gray-200 py-24 px-4 relative overflow-hidden">
+
           <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]"></div>
           <div className="max-w-6xl mx-auto relative z-10">
             <h1 className="text-5xl md:text-6xl font-bold text-center mb-8 tracking-tight">
@@ -163,16 +164,16 @@ const PhD = () => {
 
         {/* Research Areas */}
         <section className="py-20 px-4 bg-white">
-          {/* ... Your existing research areas section with updated styling ... */}
+        
         </section>
 
         {/* Admission Information */}
         <section className="py-20 px-4">
-          {/* ... Your existing admission section with updated styling ... */}
+        
         </section>
       </main>
 
-      <Footer />
+     
     </div>
   );
 };

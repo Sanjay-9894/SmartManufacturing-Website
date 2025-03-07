@@ -106,7 +106,8 @@ const BTech = () => {
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-[#1E2F23] via-[#2D3E33] to-[#1E2F23] text-gray-200 py-24 px-4 relative overflow-hidden">
+        <section className="bg-gradient-to-r from-[#1E1E1E] via-[#252525] to-[#1E1E1E] text-gray-300 py-24 px-4 relative overflow-hidden">
+
        
 
 
