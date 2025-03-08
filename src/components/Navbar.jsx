@@ -5,12 +5,18 @@ import logo from '../assets/logo.png';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isPeopleDropdownOpen, setIsPeopleDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const programsDropdownItems = [
     { label: 'B.Tech', href: '/btech' },
     { label: 'M.Tech', href: '/mtech' },
     { label: 'PhD', href: '/phd' },
+  ];
+
+  const peopleDropdownItems = [
+    { label: "HOD's Desk", href: '/hod-desk' },
+    { label: 'Faculty', href: '/faculty' },
   ];
 
   useEffect(() => {
@@ -42,7 +48,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <NavLink href="/about">About</NavLink>
 
-   
+ 
             <div
               className="relative group"
               onMouseEnter={() => setIsDropdownOpen(true)}
@@ -73,14 +79,42 @@ const Navbar = () => {
               </div>
             </div>
 
-            <NavLink href="/people">People</NavLink>
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsPeopleDropdownOpen(true)}
+              onMouseLeave={() => setIsPeopleDropdownOpen(false)}
+            >
+              <button className="flex items-center space-x-1 font-medium text-gray-500 hover:text-blue-500 transition-all duration-200 uppercase text-sm focus:outline-none">
+                <span>People</span>
+                <ChevronDown
+                  size={16}
+                  className={`transform transition-transform duration-200 ${
+                    isPeopleDropdownOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 transition-all duration-200 ease-in-out transform origin-top opacity-0 scale-y-0 group-hover:opacity-100 group-hover:scale-y-100`}
+              >
+                {peopleDropdownItems.map((item, index) => (
+                  <a
+                    key={index}
+                    href={item.href}
+                    className="block px-4 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
             <NavLink href="/research">Research</NavLink>
             <NavLink href="/placement">Placement</NavLink>
             <NavLink href="/facilities">Facilities</NavLink>
             <NavLink href="/contact">Contact us</NavLink>
           </div>
 
-  
           <button
             onClick={toggleMenu}
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none"
@@ -111,7 +145,7 @@ const Navbar = () => {
         </nav>
       </div>
 
-
+    
       <div
         className={`md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg fixed w-full transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
@@ -120,11 +154,15 @@ const Navbar = () => {
         <div className="px-4 py-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <MobileNavLink href="/about">About</MobileNavLink>
 
+   
           <MobileNavLink href="/btech">B.Tech</MobileNavLink>
           <MobileNavLink href="/mtech">M.Tech</MobileNavLink>
           <MobileNavLink href="/phd">PhD</MobileNavLink>
 
-          <MobileNavLink href="/people">People</MobileNavLink>
+        
+          <MobileNavLink href="/hod-desk">HOD's Desk</MobileNavLink>
+          <MobileNavLink href="/faculty">Faculty</MobileNavLink>
+
           <MobileNavLink href="/research">Research</MobileNavLink>
           <MobileNavLink href="/placement">Placement</MobileNavLink>
           <MobileNavLink href="/facilities">Facilities</MobileNavLink>
