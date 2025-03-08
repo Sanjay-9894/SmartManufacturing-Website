@@ -13,21 +13,6 @@ const Navbar = () => {
     { label: 'PhD', href: '/phd' },
   ];
 
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -38,10 +23,6 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -58,16 +39,16 @@ const Navbar = () => {
             </a>
           </div>
 
-        
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <NavLink href="/about">About</NavLink>
 
-            
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={toggleDropdown}
-                className="flex items-center space-x-1 font-medium text-gray-500 hover:text-blue-500 transition-all duration-200 uppercase text-sm focus:outline-none group"
-              >
+   
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsDropdownOpen(true)}
+              onMouseLeave={() => setIsDropdownOpen(false)}
+            >
+              <button className="flex items-center space-x-1 font-medium text-gray-500 hover:text-blue-500 transition-all duration-200 uppercase text-sm focus:outline-none">
                 <span>Programs</span>
                 <ChevronDown
                   size={16}
@@ -78,11 +59,7 @@ const Navbar = () => {
               </button>
 
               <div
-                className={`absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 transition-all duration-200 ease-in-out transform origin-top ${
-                  isDropdownOpen
-                    ? 'opacity-100 scale-y-100'
-                    : 'opacity-0 scale-y-0 pointer-events-none'
-                }`}
+                className={`absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 transition-all duration-200 ease-in-out transform origin-top opacity-0 scale-y-0 group-hover:opacity-100 group-hover:scale-y-100`}
               >
                 {programsDropdownItems.map((item, index) => (
                   <a
@@ -103,7 +80,7 @@ const Navbar = () => {
             <NavLink href="/contact">Contact us</NavLink>
           </div>
 
-
+  
           <button
             onClick={toggleMenu}
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none"
@@ -134,47 +111,18 @@ const Navbar = () => {
         </nav>
       </div>
 
-      {/* Mobile Menu */}
+
       <div
         className={`md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg fixed w-full transition-all duration-300 ease-in-out ${
-          isMenuOpen
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 -translate-y-full pointer-events-none'
+          isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
         }`}
       >
         <div className="px-4 py-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <MobileNavLink href="/about">About</MobileNavLink>
 
-          {/* Mobile Dropdown */}
-          <div>
-            <button
-              onClick={toggleDropdown}
-              className="w-full flex items-center justify-between px-3 py-2 text-gray-500 hover:text-blue-500 hover:bg-gray-50 rounded-lg font-medium uppercase text-sm transition-colors duration-200"
-            >
-              <span>Programs</span>
-              <ChevronDown
-                size={16}
-                className={`transform transition-transform duration-200 ${
-                  isDropdownOpen ? 'rotate-180' : ''
-                }`}
-              />
-            </button>
-            <div
-              className={`pl-6 space-y-1 transition-all duration-200 ease-in-out overflow-hidden ${
-                isDropdownOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
-              }`}
-            >
-              {programsDropdownItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  className="block px-3 py-2 text-gray-600 hover:bg-gray-50 hover:text-blue-500 rounded-lg transition-colors duration-200"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
+          <MobileNavLink href="/btech">B.Tech</MobileNavLink>
+          <MobileNavLink href="/mtech">M.Tech</MobileNavLink>
+          <MobileNavLink href="/phd">PhD</MobileNavLink>
 
           <MobileNavLink href="/people">People</MobileNavLink>
           <MobileNavLink href="/research">Research</MobileNavLink>
@@ -186,7 +134,6 @@ const Navbar = () => {
     </div>
   );
 };
-
 
 const NavLink = ({ href, children }) => (
   <a
