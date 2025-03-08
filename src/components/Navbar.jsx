@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
 
   const peopleDropdownItems = [
-    { label: "HOD's Desk", href: '/hod-desk' },
+    { label: "HOD's Desk", href: '/hoddesk' },
     { label: 'Faculty', href: '/faculty' },
   ];
 
@@ -160,7 +160,7 @@ const Navbar = () => {
           <MobileNavLink href="/phd">PhD</MobileNavLink>
 
         
-          <MobileNavLink href="/hod-desk">HOD's Desk</MobileNavLink>
+          <MobileNavLink href="/hoddesk">HOD's Desk</MobileNavLink>
           <MobileNavLink href="/faculty">Faculty</MobileNavLink>
 
           <MobileNavLink href="/research">Research</MobileNavLink>

@@ -7,6 +7,7 @@ import Btech from './components/Programs/btech';
 import Mtech from './components/Programs/mtech';
 import Phd from './components/Programs/phd';
 import About from './components/About';
+import HodDesk from './components/People/Hoddesk';
 
 
 
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/mtech" element={<Mtech />} />
           <Route path="/phd" element={<Phd />} />
           <Route path="/about" element={<About />} />
+          <Route path="/hoddesk" element={<HodDesk />} />
 
         </Routes>
       </div>
