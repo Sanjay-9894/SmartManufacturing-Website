@@ -46,7 +46,7 @@ const HodDesk = () => {
                 <div className="mt-6 space-y-2 text-sm text-gray-600">
                   <p>Ph.D. in Manufacturing Engineering</p>
                   <p>20+ Years of Academic Excellence</p>
-                  <p>k.ponappa@university.edu</p>
+                  <p>kponappa@iiitdmj.ac.in</p>
                 </div>
               </div>
             </div>

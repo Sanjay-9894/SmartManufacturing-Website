@@ -8,6 +8,7 @@ import Mtech from './components/Programs/mtech';
 import Phd from './components/Programs/phd';
 import About from './components/About';
 import HodDesk from './components/People/Hoddesk';
+import ContactPage from './components/Contact';
 
 
 
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/phd" element={<Phd />} />
           <Route path="/about" element={<About />} />
           <Route path="/hoddesk" element={<HodDesk />} />
+          <Route path="/contact" element={<ContactPage />} />
 
         </Routes>
       </div>
