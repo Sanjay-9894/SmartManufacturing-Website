@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPeopleDropdownOpen, setIsPeopleDropdownOpen] = useState(false);
+  const [mobileDropdowns, setMobileDropdowns] = useState({
+    programs: false,
+    people: false
+  });
   const dropdownRef = useRef(null);
 
   const programsDropdownItems = [
@@ -31,6 +36,53 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const toggleMobileDropdown = (dropdown) => {
+    setMobileDropdowns(prev => ({
+      ...prev,
+      [dropdown]: !prev[dropdown]
+    }));
+  };
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: { 
+        duration: 0.2,
+        ease: "easeIn"
+      }
+    }
+  };
+
+  const dropdownVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { 
+      opacity: 1, 
+      height: "auto",
+      transition: { 
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      height: 0,
+      transition: { 
+        duration: 0.2,
+        ease: "easeIn"
+      }
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm border-b border-gray-200">
       <div className="container mx-auto px-4 lg:px-6">
@@ -48,7 +100,6 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <NavLink href="/about">About</NavLink>
 
- 
             <div
               className="relative group"
               onMouseEnter={() => setIsDropdownOpen(true)}
@@ -110,7 +161,7 @@ const Navbar = () => {
             </div>
 
             <NavLink href="/research">Research</NavLink>
-            <NavLink href="/placement">Placement</NavLink>
+            <NavLink href="/placements">Placement</NavLink>
             <NavLink href="/facilities">Facilities</NavLink>
             <NavLink href="/contact">Contact us</NavLink>
           </div>
@@ -145,30 +196,105 @@ const Navbar = () => {
         </nav>
       </div>
 
-    
-      <div
-        className={`md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg fixed w-full transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
-        }`}
-      >
-        <div className="px-4 py-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-          <MobileNavLink href="/about">About</MobileNavLink>
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={mobileMenuVariants}
+            className="md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg fixed w-full"
+          >
+            <div className="px-4 py-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
+              <MobileNavLink href="/about">About</MobileNavLink>
 
-   
-          <MobileNavLink href="/btech">B.Tech</MobileNavLink>
-          <MobileNavLink href="/mtech">M.Tech</MobileNavLink>
-          <MobileNavLink href="/phd">PhD</MobileNavLink>
+              {/* Programs Dropdown for Mobile */}
+              <div className="border-b border-gray-100 pb-1">
+                <button
+                  onClick={() => toggleMobileDropdown('programs')}
+                  className="w-full flex items-center justify-between px-3 py-2 text-gray-500 hover:text-blue-500 hover:bg-gray-50 rounded-lg font-medium uppercase text-sm transition-colors duration-200"
+                >
+                  <span>Programs</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transform transition-transform duration-200 ${
+                      mobileDropdowns.programs ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {mobileDropdowns.programs && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      variants={dropdownVariants}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-4 space-y-1 py-1 bg-gray-50 rounded-lg mt-1">
+                        {programsDropdownItems.map((item, index) => (
+                          <a
+                            key={index}
+                            href={item.href}
+                            className="block px-3 py-2 text-gray-500 hover:text-blue-500 hover:bg-gray-100 rounded-lg font-medium text-sm transition-colors duration-200"
+                          >
+                            {item.label}
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-        
-          <MobileNavLink href="/hoddesk">HOD's Desk</MobileNavLink>
-          <MobileNavLink href="/faculty">Faculty</MobileNavLink>
+              {/* People Dropdown for Mobile */}
+              <div className="border-b border-gray-100 pb-1">
+                <button
+                  onClick={() => toggleMobileDropdown('people')}
+                  className="w-full flex items-center justify-between px-3 py-2 text-gray-500 hover:text-blue-500 hover:bg-gray-50 rounded-lg font-medium uppercase text-sm transition-colors duration-200"
+                >
+                  <span>People</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transform transition-transform duration-200 ${
+                      mobileDropdowns.people ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {mobileDropdowns.people && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      variants={dropdownVariants}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-4 space-y-1 py-1 bg-gray-50 rounded-lg mt-1">
+                        {peopleDropdownItems.map((item, index) => (
+                          <a
+                            key={index}
+                            href={item.href}
+                            className="block px-3 py-2 text-gray-500 hover:text-blue-500 hover:bg-gray-100 rounded-lg font-medium text-sm transition-colors duration-200"
+                          >
+                            {item.label}
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-          <MobileNavLink href="/research">Research</MobileNavLink>
-          <MobileNavLink href="/placement">Placement</MobileNavLink>
-          <MobileNavLink href="/facilities">Facilities</MobileNavLink>
-          <MobileNavLink href="/contact">Contact us</MobileNavLink>
-        </div>
-      </div>
+              <MobileNavLink href="/research">Research</MobileNavLink>
+              <MobileNavLink href="/placements">Placement</MobileNavLink>
+              <MobileNavLink href="/facilities">Facilities</MobileNavLink>
+              <MobileNavLink href="/contact">Contact us</MobileNavLink>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

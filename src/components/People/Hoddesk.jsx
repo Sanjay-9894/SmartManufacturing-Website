@@ -1,5 +1,5 @@
 import React from 'react';
-import hodImage from "../../assets/hod-image.jpg";
+import hodImage from "../../assets/Ponappa,K.jpeg";
 
 const HodDesk = () => {
   const researchAreas = [

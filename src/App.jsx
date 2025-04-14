@@ -9,6 +9,7 @@ import Phd from './components/Programs/phd';
 import About from './components/About';
 import HodDesk from './components/People/Hoddesk';
 import ContactPage from './components/Contact';
+import Placements from './components/placements';
 
 
 
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/hoddesk" element={<HodDesk />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/placements" element={<Placements />} />
 
         </Routes>
       </div>
