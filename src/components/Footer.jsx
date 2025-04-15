@@ -33,10 +33,10 @@ const Footer = () => {
                 <span className="mr-2">📍</span> PDPM IIITDM Jabalpur, Dumna Airport Road, Jabalpur, MP, India
               </p>
               <p className="flex items-center mb-2">
-                <span className="mr-2">📞</span> +91 761 2794XXX
+                <span className="mr-2">📞</span> +91-761-2794411
               </p>
               <p className="flex items-center mb-2">
-                <span className="mr-2">✉️</span> info@iiitdmj.ac.in
+                <span className="mr-2">✉️</span> headsm@iiitdmj.ac.in
               </p>
             </div>
           </div>

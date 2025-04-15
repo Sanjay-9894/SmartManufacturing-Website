@@ -133,8 +133,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800">Phone</h3>
-                  <p className="text-gray-600">Tel: 0761-279XXXX</p>
-                  <p className="text-gray-600">Fax: +91-761-26XXXX</p>
+                  <p className="text-gray-600">ph: +91-761-2794343</p>
+                  <p className="text-gray-600">Office of Dean(RSPC): +91-761-2794152</p>
                 </div>
               </div>
 
@@ -158,7 +158,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800">Email</h3>
-                  <p className="text-gray-600">info@iiitdmj.ac.in</p>
+                  <p className="text-gray-600">headsm@iiitdmj.ac.in</p>
                 </div>
               </div>
             </div>

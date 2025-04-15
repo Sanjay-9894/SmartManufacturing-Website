@@ -278,13 +278,13 @@ const Index = () => {
               <span className="bg-blue-100 p-2 rounded-full">
                 <Mail className="h-6 w-6 text-blue-600" />
               </span>
-              <strong>Email:</strong> placements@smartmanufacturing.edu
+              <strong>Email:</strong> placement@iiitdmj.ac.in
             </p>
             <p className="flex items-center justify-center gap-2 text-lg">
               <span className="bg-blue-100 p-2 rounded-full">
                 <Phone className="h-6 w-6 text-blue-600" />
               </span>
-              <strong>Phone:</strong> +91-XXX-XXX-XXXX
+              <strong>Phone:</strong> +91-761-2794152
             </p>
             <p className="flex items-center justify-center gap-2 text-lg">
               <span className="bg-blue-100 p-2 rounded-full">
